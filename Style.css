@@ -1,0 +1,41 @@
+body{    
+    background:-o-linear-gradient(yellowgreen);
+    height: 100%;
+}
+
+.container{
+    width: 200px;
+    margin: 12px auto;
+    color:greenyellow;
+}
+
+h1,h2,h3{
+        font-weight: 150;
+        font-style:bold;
+        font-size: 2.5rem;
+        text-transform: capitalize;
+}
+
+
+#seconds,
+#ten{
+    font-size: 2em;
+}
+
+button{
+    width: 150px;
+    height: 50px;
+    background: transparent;
+    color: greenyellow;
+    border: 3px solid white ;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+}
+
+button:hover{
+    background:white;
+    color:aqua;
+    font-weight: 700;
+    text-transform: capitalize;
+}
