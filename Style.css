@@ -2,12 +2,16 @@ body{
     background: -o-linear-gradient(gray);
     height: 100%;
     color: white; 
+    justify-content: center;
+    align-items: center;
+
 }
 
 .container{
     width: 200px;
-    margin: 12px auto;
-    color:greenyellow;
+    margin: 100px auto;
+    padding: 100px;
+    background-color: aquamarine;
 }
 
 h1,h2,h3{
