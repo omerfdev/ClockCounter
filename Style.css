@@ -1,6 +1,7 @@
 body{    
-    background:-o-linear-gradient(yellowgreen);
+    background: -o-linear-gradient(gray);
     height: 100%;
+    color: white; 
 }
 
 .container{
@@ -18,7 +19,8 @@ h1,h2,h3{
 
 
 #seconds,
-#ten{
+#ten,
+#minutes{
     font-size: 2em;
 }
 
@@ -26,7 +28,7 @@ button{
     width: 150px;
     height: 50px;
     background: transparent;
-    color: greenyellow;
+    color:blueviolet;
     border: 3px solid white ;
     border-radius: 5px;
     margin-right: 10px;
