@@ -10,7 +10,7 @@
 <body>
     <h1>Clock Counter</h1>
     <div class="container">
-        <p><span id="minutes">00</span>:<span id="seconds">00</span>:<span id="tens">00</span></p>
+        <p><span id="minutes">05</span>:<span id="seconds">00</span>:<span id="tens">00</span></p>
         <button id="button-start">Start</button>
         <button id="button-stop">Stop</button> 
         <button id="button-reset">Reset</button>
@@ -19,62 +19,60 @@
 </html>
 
 <script>
-var minutes = 0;
-var seconds = 0;
-var tens = 0;
-var appendMinutes = document.getElementById("minutes");
-var appendSeconds = document.getElementById("seconds");
-var appendTens = document.getElementById("tens");
-var buttonStart = document.getElementById("button-start");
-var buttonStop = document.getElementById("button-stop");
-var buttonReset = document.getElementById("button-reset");
-var interval;
+  var minutes = 5;
+        var seconds = 0;
+        var tens = 0;
+        var appendMinutes = document.getElementById("minutes");
+        var appendSeconds = document.getElementById("seconds");
+        var appendTens = document.getElementById("tens");
+        var buttonStart = document.getElementById("button-start");
+        var buttonStop = document.getElementById("button-stop");
+        var buttonReset = document.getElementById("button-reset");
+        var interval;
 
-function startTimer() {
-    tens++;
+        function startTimer() {
+            tens--;
 
-    if (tens < 9) {
-        appendTens.innerHTML = "0" + tens;
-    }
+            if (tens < 0) {
+                tens = 99;
+                seconds--;
 
-    if (tens > 9) {
-        appendTens.innerHTML = tens;
-    }
+                if (seconds < 0) {
+                    seconds = 59;
+                    if (minutes > 0) {
+                        minutes--;
 
-    if (tens > 99) {
-        seconds++;
-        appendSeconds.innerHTML = "0" + seconds;
-        tens = 0;
-        appendTens.innerHTML = "0" + 0;
-    }
+                        if (minutes < 10) {
+                            appendMinutes.innerHTML = "0" + minutes;
+                        } else {
+                            appendMinutes.innerHTML = minutes;
+                        }
+                    } else {
+                        clearInterval(interval);
+                    }
+                }
+            }
 
-    if (seconds > 9) {
-        appendSeconds.innerHTML = seconds;
-    }
+            appendTens.innerHTML = tens < 10 ? "0" + tens : tens;
+            appendSeconds.innerHTML = seconds < 10 ? "0" + seconds : seconds;
+        }
 
-    if (seconds > 59) {
-        minutes++;
-        appendMinutes.innerHTML = "0" + minutes;
-        seconds = 0;
-        appendSeconds.innerHTML = "0" + 0;
-    }
-}
+        buttonStart.onclick = function () {
+            interval = setInterval(startTimer, 100); 
+        };
 
-buttonStart.onclick = function () {
-    interval = setInterval(startTimer);
-};
+        buttonStop.onclick = function () {
+            clearInterval(interval);
+        };
 
-buttonStop.onclick = function () {
-    clearInterval(interval);
-};
+        buttonReset.onclick = function () {
+            clearInterval(interval);
+            minutes = 5;
+            seconds = 0;
+            tens = 0;
+            appendMinutes.innerHTML = "0" + minutes;
+            appendSeconds.innerHTML = "0" + seconds;
+            appendTens.innerHTML = "00";
+        };
 
-buttonReset.onclick = function () {
-    clearInterval(interval);
-    minutes = 0;
-    seconds = 0;
-    tens = 0;
-    appendMinutes.innerHTML = "00";
-    appendSeconds.innerHTML = "00";
-    appendTens.innerHTML = "00";
-};
 </script>
